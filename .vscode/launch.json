@@ -1,0 +1,45 @@
+
+{
+    // VS Code Debug Configuration 格式版本
+    "version": "0.2.0",
+
+    // configurations：可以定義多組 Debug 設定
+    "configurations": [
+        {
+            // Debug 設定名稱
+            // 顯示在 VS Code Run and Debug 下拉選單
+            "name": "C++17: Debug Current Sample",
+
+            // lldb：使用 CodeLLDB 提供的 Debug Adapter
+            // 負責讓 VS Code 與 LLDB Debugger 溝通
+            "type": "lldb",
+
+            // launch：啟動一個新的程式進行除錯
+            // 另一種模式是 attach，連接已經執行中的 Process
+            "request": "launch",
+
+            // program：指定要執行及除錯的執行檔
+            // ${fileDirname}：目前作用中檔案所在資料夾
+            // /app：該資料夾內的編譯結果
+            "program": "${fileDirname}/app",
+
+            // args：傳遞給 C++ 程式的命令列參數
+            // 例如程式執行時需要輸入檔名或其他參數
+            "args": [],
+
+            // cwd：程式執行時的工作目錄
+            // 與 tasks.json 的 cwd 不同
+            // 這裡控制的是被除錯程式的執行環境
+            "cwd": "${fileDirname}",
+
+            // 啟動 Debug 前，先執行指定的 Task
+            // 名稱必須對應 tasks.json 的 label
+            // 確保程式先編譯成功，再啟動 LLDB
+            "preLaunchTask": "C++17: Build",
+
+            // true：程式開始執行時先暫停
+            // false：直接執行，直到遇到 Breakpoint
+            "stopOnEntry": true
+        }
+    ]
+}

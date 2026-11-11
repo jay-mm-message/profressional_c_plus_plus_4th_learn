@@ -1,0 +1,66 @@
+
+{
+    // VS Code Task 設定檔版本
+    // 2.0.0 是目前常用的 tasks.json 格式
+    "version": "2.0.0",
+
+    "tasks": [
+        {
+            // Task 名稱
+            // launch.json 會透過這個名稱呼叫 Build Task
+            // 名稱必須與 launch.json 的 preLaunchTask 完全一致
+            "label": "C++17: Build",
+
+            // process：直接啟動指定的執行程式
+            // 與 shell 不同，不會自動透過 Shell 解讀命令
+            "type": "process",
+
+            // 使用 macOS 的 Bash 執行編譯指令
+            "command": "/bin/bash",
+
+            "args": [
+                // -c：告訴 Bash 將下一個參數當成 Shell 指令執行
+                "-c",
+
+                // nullglob：沒有符合的 *.cpp 時，展開成空陣列
+                // files=( *.cpp )：取得目前目錄下所有 cpp 檔案
+                // ${#files[@]}：取得陣列元素數量
+                // 如果沒有 cpp 檔案，就顯示錯誤並結束
+                //
+                // printf：顯示本次參與編譯的原始碼
+                //
+                // g++：呼叫 GNU C++ Compiler
+                // -std=c++17：使用 C++17 標準
+                // -Wall：開啟常見編譯警告
+                // -Wextra：開啟額外編譯警告
+                // -g：產生除錯資訊，供 LLDB 使用
+                // -O0：關閉最佳化，方便追蹤程式執行
+                // -o app：指定輸出的執行檔名稱為 app
+                // "${files[@]}"：將所有 cpp 檔案傳給編譯器
+                "shopt -s nullglob; files=( *.cpp ); if (( ${#files[@]} == 0 )); then echo 'ERROR: No .cpp files found'; exit 1; fi; echo '===== BUILD ====='; printf 'Compiling: %s\\n' \"${files[@]}\"; g++ -std=c++17 -Wall -Wextra -g -O0 -o app \"${files[@]}\""
+            ],
+
+            "options": {
+                // cwd = Current Working Directory
+                // 指定編譯時所在的目錄
+                // ${fileDirname} 代表目前作用中檔案所在的資料夾
+                // 例如：ch01/sample
+                "cwd": "${fileDirname}"
+            },
+
+            "group": {
+                // 將此 Task 歸類為 Build Task
+                "kind": "build",
+
+                // 設為預設 Build Task
+                // 按 Cmd + Shift + B 就會執行它
+                "isDefault": true
+            },
+
+            // 將 GCC / G++ 的編譯錯誤轉換成 VS Code Problems 訊息
+            "problemMatcher": [
+                "$gcc"
+            ]
+        }
+    ]
+}
