@@ -85,6 +85,7 @@ int main() {
 }
 #endif
 
+#if 0
 int main() {
 	struct Employee {
 		char firstInitial;
@@ -102,5 +103,66 @@ int main() {
 	cout << "Employee: " << anEmployee.firstInitial << " " << anEmployee.lastInitial << endl;
 	cout << "Number: " << anEmployee.employeeNumber << endl;
 	cout << "Salary: $" << anEmployee.salary << endl;
+	return 0;
+}
+#endif
+
+#if 0
+int main() {
+
+	int number = 0;
+	while(number < 11) {
+		if (unsigned int salary = number ; salary <= 10) {
+			cout << "salary :" << salary << endl;
+		}
+		++number;
+	}
+
+	return 0;
+}
+#endif
+
+#if 0
+int main() {
+	enum Color { DarkBlue, Black, Red, Green };
+
+	unsigned int i = 0;
+	Color backgroundColor = static_cast<Color>(i);
+	while(backgroundColor <= Color::Green) {
+		switch(backgroundColor) {
+			case Color::DarkBlue:
+				cout << "Color::DarkBlue" << endl;
+				break;
+			case Color::Black:
+				cout << "Color::Black" << endl;
+				break;
+			case Color::Green:
+				cout << "Color::Green" << endl;
+				break;
+			case Color::Red:
+				cout << "Color::Red" << endl;
+				break;
+			default:
+				break;
+		}
+		++i;
+		backgroundColor = static_cast<Color>(i);
+	}
+}
+#endif
+
+// c++17 provide new call function name
+void addNum(int numb_1, int numb_2, int &sum_num) {
+	cout << "func: " << __func__ << endl;
+	sum_num = numb_1 + numb_2;
+}
+
+int main() {
+
+	int i = 3, j = 2, sum = 0;
+	addNum(i, j, sum);
+	cout << i << " + " << j << " = " << sum;
+
+	cout << endl;
 	return 0;
 }
