@@ -151,6 +151,7 @@ int main() {
 }
 #endif
 
+#if 0
 // c++17 provide new call function name
 void addNum(int numb_1, int numb_2, int &sum_num) {
 	cout << "func: " << __func__ << endl;
@@ -163,6 +164,15 @@ int main() {
 	addNum(i, j, sum);
 	cout << i << " + " << j << " = " << sum;
 
+	cout << endl;
+	return 0;
+}
+#endif
+
+#include <iterator>
+int main() {
+	int n_arr[] = {1, 2, 3, 4, 5, 6, 7, 8};
+	cout << "n_arr length: " << std::size(n_arr);
 	cout << endl;
 	return 0;
 }
