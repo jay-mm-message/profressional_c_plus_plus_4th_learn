@@ -169,6 +169,7 @@ int main() {
 }
 #endif
 
+#if 0
 #include <iterator>
 int main() {
 	int n_arr[] = {1, 2, 3, 4, 5, 6, 7, 8};
@@ -176,3 +177,57 @@ int main() {
 	cout << endl;
 	return 0;
 }
+#endif
+
+#if 0
+int main() {
+	array<int, 3> n_arr = {1, 2, 3};
+	for(auto p = n_arr.begin() ; p != n_arr.end() ; ++p) {
+		cout << *p << endl;
+	}
+	return 0;
+}
+#endif
+
+#if 0
+int main() {
+	vector<int> n_arr(0);
+	int i = 0;
+	while(i < 10) {
+		n_arr.push_back(i);
+		++i;
+	}
+
+	for(auto p = n_arr.begin() ; p != n_arr.end() ; ++p)
+		cout << *p << endl;
+
+	cout << endl;
+	return 0;
+}
+#endif
+
+int main() {
+	struct Point {
+		double mX;
+		double mY;
+		double mZ;
+		double mK;
+	};
+
+	Point point;
+	point.mX = 1.0;
+	point.mY = 2.0;
+	point.mZ = 3.0;
+	point.mK = 4.0;
+
+	auto [ x, y, z, k ] = point;
+
+	cout << "x: " << x << endl;
+	cout << "y: " << y << endl;
+	cout << "z: " << z << endl;
+	cout << "k: " << k << endl;
+
+	cout << endl;
+	return 0;
+}
+
