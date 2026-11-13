@@ -11,6 +11,17 @@ int main() {
 	delete myIntPointer;
 	myIntPointer = nullptr;
 
+	int array_size = 8;
+	myIntPointer = new int[array_size];
+	for(int i = 0 ; i < array_size ; ++i) {
+		myIntPointer[i] = i + 1;
+	}
+	for(int i = 0 ; i < array_size ; ++i) {
+		cout << *(myIntPointer + i) << ' ';
+	}
+	delete [] myIntPointer;
+	myIntPointer = nullptr;
+
 	cout << endl;
 	return 0;
 }
