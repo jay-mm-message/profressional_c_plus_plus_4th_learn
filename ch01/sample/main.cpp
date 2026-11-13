@@ -206,6 +206,7 @@ int main() {
 }
 #endif
 
+#if 0
 int main() {
 	struct Point {
 		double mX;
@@ -230,4 +231,19 @@ int main() {
 	cout << endl;
 	return 0;
 }
+#endif
 
+void show_num(initializer_list<int> list) {
+	unsigned int cnt = 0;
+	for(int num : list) {
+		cout << cnt << ":" << num << endl;
+		++cnt;
+	}
+}
+
+int main() {
+	show_num({10, 1, 2, 5, 7, 9, 8, 3, 4});
+
+	cout << endl;
+	return 0;
+}
