@@ -39,7 +39,7 @@
 
             // true：程式開始執行時先暫停
             // false：直接執行，直到遇到 Breakpoint
-            "stopOnEntry": true
+            "stopOnEntry": false,
         }
     ]
 }
