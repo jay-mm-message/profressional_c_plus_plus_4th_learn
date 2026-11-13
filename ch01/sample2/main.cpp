@@ -1,6 +1,20 @@
 #include <iostream>
 using namespace std;
 
+void func(char *srt) {
+	cout << "char* version" << endl;
+}
+void func(int i) {
+	cout << "int version" << endl;
+}
+
+int main() {
+	func(nullptr);
+	func(0);
+	return 0;
+}
+
+#if 0
 int main() {
 	int * myIntPointer = nullptr;
 	myIntPointer = new int;
@@ -25,3 +39,4 @@ int main() {
 	cout << endl;
 	return 0;
 }
+#endif
