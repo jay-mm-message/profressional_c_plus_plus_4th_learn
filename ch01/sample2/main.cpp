@@ -8,6 +8,9 @@ int main() {
 	*myIntPointer = 8;
 	cout << "myIntPointer: " << *myIntPointer << endl;
 
+	delete myIntPointer;
+	myIntPointer = nullptr;
+
 	cout << endl;
 	return 0;
 }
