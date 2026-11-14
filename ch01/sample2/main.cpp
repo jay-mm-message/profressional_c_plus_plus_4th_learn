@@ -1,6 +1,30 @@
 #include <iostream>
 using namespace std;
 
+int main() {
+	class Employee {
+		typedef unsigned int unit32;
+		public:
+			string name;
+			unit32 salary;
+		public:
+			void show() {
+				cout << "Employee name: " << this->name;
+				cout << ", salary: " << this->salary;
+				cout << endl;
+			}
+		public:
+			Employee(string srt, unit32 number) : name(srt), salary(number) {};
+	};
+
+	auto anEmployee = make_unique<Employee>("Ellen", 2500);
+	anEmployee->show();
+
+	cout << endl;
+	return 0;
+}
+
+#if 0
 void func(char *srt) {
 	cout << "char* version" << endl;
 }
@@ -13,6 +37,7 @@ int main() {
 	func(0);
 	return 0;
 }
+#endif
 
 #if 0
 int main() {
