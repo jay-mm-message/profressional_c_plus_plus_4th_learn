@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 
+#if 0
 int main() {
 	class Employee {
 		typedef unsigned int unit32;
@@ -23,6 +24,7 @@ int main() {
 	cout << endl;
 	return 0;
 }
+#endif
 
 #if 0
 void func(char *srt) {
