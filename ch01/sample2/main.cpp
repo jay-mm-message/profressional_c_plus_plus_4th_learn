@@ -1,6 +1,58 @@
 #include <iostream>
 using namespace std;
 
+void show_info(const string * const names, const size_t sz) {
+	names = new string[3];
+	for(auto name = names ; name != names + sz ; ++name) {
+		cout << "info: " << *name << endl;
+	}
+	return;
+}
+
+int main() {
+	string names[] = {"Tom", "Ellen", "Sandy"};
+	show_info(names, sizeof(names) / sizeof(string));
+	return 0;
+}
+
+#if 0
+int main() {
+	auto num_a = make_unique<int>();
+	auto num_b = make_unique<int>();
+
+	*num_a = 100;
+	*num_b = -150;
+
+	cout << *num_a << "+" << *num_b << "=" << *num_a + *num_b;
+	cout << endl;
+	return 0;
+}
+#endif
+
+#if 0
+class Employee {
+	typedef unsigned int unit32;
+	public:
+		string name;
+		unit32 salary;
+	public:
+		Employee(string srt, unit32 number) : name(srt), salary(number) {};
+};
+void show_employee_info(const Employee &employee) {
+	cout << "Employee name: " << employee.name << ", salary: " << employee.salary << endl;
+}
+
+int main() {
+	auto anEmployee = make_unique<Employee>("Ellen", 5000);
+	show_employee_info(*anEmployee);
+	//cout << "type is " << anEmployee << endl;
+
+	cout << endl;
+	return 0;
+}
+#endif
+
+
 #if 0
 int main() {
 	class Employee {
