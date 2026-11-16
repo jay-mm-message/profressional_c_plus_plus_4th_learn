@@ -22,6 +22,23 @@ class AirlineTicket {
 		bool mHasEliteSuperRewardsStatus;
 };
 
+AirlineTicket::AirlineTicket() {
+	this->mPassengerName = "Unknown Passenger";
+	this->mNumberOfMiles = 0;
+	this->mHasEliteSuperRewardsStatus = false;
+	cout << __func__ << endl;
+}
+
+AirlineTicket::~AirlineTicket() {
+	cout << __func__ << endl;
+}
+
 int main() {
+	AirlineTicket * anAirlineTicket = new AirlineTicket();
+	delete anAirlineTicket;
+
+	AirlineTicket an2AirlineTicket;
+
+	cout << endl;
 	return 0;
 }
