@@ -1,6 +1,42 @@
 #include <iostream>
 using namespace std;
 
+int main() {
+	double x = 125;
+	decltype(x) y = 125;
+
+	cout << y << endl;
+	cout << endl;
+	return 0;
+}
+
+#if 0
+void throw_show() {
+	throw invalid_argument("exception testing");
+}
+
+void throw_msg(const string res) {
+	throw invalid_argument( "exception msg: " + res);
+}
+
+void try_cash() {
+	try {
+		cout << "try_cash" << endl;
+		//throw_show();
+		throw_msg("world hello");
+	} catch(const invalid_argument & e) {
+		cout << "Exception caught(try_cash): " << e.what() << endl;
+	}
+}
+
+int main() {
+	//throw_show();
+	try_cash();
+	return 0;
+}
+#endif
+
+#if 0
 void show_info(const string * const names, const size_t sz) {
 	names = new string[3];
 	for(auto name = names ; name != names + sz ; ++name) {
@@ -14,6 +50,7 @@ int main() {
 	show_info(names, sizeof(names) / sizeof(string));
 	return 0;
 }
+#endif
 
 #if 0
 int main() {
