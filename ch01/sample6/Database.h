@@ -6,7 +6,7 @@
 namespace Records
 {
 	using std::vector;
-	const int kFirstEmployeeNumber = 1000;
+	const int kFirstEmployeeNumber = 0;
 	class Database {
 		public:
 			Employee &addEmployee(const string &firstName,

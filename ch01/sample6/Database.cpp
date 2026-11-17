@@ -3,6 +3,8 @@ using Records::Employee;
 using Records::Database;
 using std::string;
 using std::logic_error;
+using std::endl;
+using std::cout;
 
 Employee &Database::addEmployee(const string &firstName,
 	const string &lastName) {
@@ -35,21 +37,33 @@ Employee &Database::getEmployee(const string &firstName,
 }
 
 void Database::displayAll() const {
+	cout << "==== display all ==== "
+		<< endl;
 	for(const auto & employee : this->mEmployees) {
 		employee.display();
 	}
+	cout << "=== finish information =="
+		<< endl;
 }
 void Database::displayCurrent() const {
+	cout << "==== display current ==== "
+		<< endl;
 	for(const auto & employee : this->mEmployees) {
 		if (employee.isHired()) {
 			employee.display();
 		}
 	}
+	cout << "=== finish information =="
+		<< endl;
 }
 void Database::displayFormer() const {
+	cout << "==== display former ==== "
+		<< endl;
 	for(const auto & employee : this->mEmployees) {
 		if (!employee.isHired()) {
 			employee.display();
 		}
 	}
+	cout << "=== finish information =="
+		<< endl;
 }
