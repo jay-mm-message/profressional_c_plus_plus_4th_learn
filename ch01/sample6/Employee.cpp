@@ -28,7 +28,7 @@ void Employee::fire() {  // Dismisses the employee
 	this->mHired = false;
 }
 
-void Employee::display() { // Outputs employee info to console
+void Employee::display() const { // Outputs employee info to console
 	cout << "Employee: "
 		<<	this->getLastName()
 		<< ", "

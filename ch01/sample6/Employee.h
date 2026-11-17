@@ -20,7 +20,7 @@ namespace Records {
 			void demote(int demeritAmount = 1000);
 			void hire(); // Hires or rehires the employee
 			void fire(); // Dismisses the employee
-			void display(); // Outputs employee info to console
+			void display() const; // Outputs employee info to console
 
 			// Getters and setters
 			void setFirstName(const string &firstName);
