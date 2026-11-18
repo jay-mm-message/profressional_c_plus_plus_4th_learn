@@ -22,10 +22,25 @@
                 // -c：告訴 Bash 將下一個參數當成 Shell 指令執行
                 "-c",
 
+
+                // =================================================
+                // Step 1：搜尋 C++ 原始碼
+                // =================================================
                 // nullglob：沒有符合的 *.cpp 時，展開成空陣列
+
+				// =================================================
+                // Step 2：檢查原始碼是否存在
+                // =================================================
+
                 // files=( *.cpp )：取得目前目錄下所有 cpp 檔案
                 // ${#files[@]}：取得陣列元素數量
                 // 如果沒有 cpp 檔案，就顯示錯誤並結束
+
+                // =================================================
+                // Step 3：顯示 Build 資訊
+                // =================================================
+
+                // 顯示 Build 標題
                 //
                 // printf：顯示本次參與編譯的原始碼
                 //
@@ -33,11 +48,24 @@
                 // -std=c++17：使用 C++17 標準
                 // -Wall：開啟常見編譯警告
                 // -Wextra：開啟額外編譯警告
+	            // -Wpedantic：檢查非標準或非 ISO C++ 相容的語法
                 // -g：產生除錯資訊，供 LLDB 使用
                 // -O0：關閉最佳化，方便追蹤程式執行
+                // -fsanitize=address：
+                // 啟用 AddressSanitizer (ASan)
+                // 偵測 Buffer Overflow、Use-after-free 等
+                //
+                // -fsanitize=undefined：
+                // 啟用 UndefinedBehaviorSanitizer (UBSan)
+                // 偵測部分 Undefined Behavior
+                //
+                // -fno-omit-frame-pointer：
+                // 保留 Stack Frame Pointer
+                // 讓 Sanitizer 的 Stack Trace 更容易閱讀
+
                 // -o app：指定輸出的執行檔名稱為 app
                 // "${files[@]}"：將所有 cpp 檔案傳給編譯器
-                "shopt -s nullglob; files=( *.cpp ); if (( ${#files[@]} == 0 )); then echo 'ERROR: No .cpp files found'; exit 1; fi; echo '===== BUILD ====='; printf 'Compiling: %s\\n' \"${files[@]}\"; g++ -std=c++17 -Wall -Wextra -g -O0 -o app \"${files[@]}\""
+				"shopt -s nullglob; files=( *.cpp ); if (( ${#files[@]} == 0 )); then echo 'ERROR: No .cpp files found'; exit 1; fi; echo '===== BUILD ====='; printf 'Compiling: %s\\n' \"${files[@]}\"; g++ -std=c++17 -Wall -Wextra -Wpedantic -g -O0 -fsanitize=address,undefined -fno-omit-frame-pointer -o app \"${files[@]}\""
             ],
 
             "options": {
